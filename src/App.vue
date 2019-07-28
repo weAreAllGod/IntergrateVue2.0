@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
+    <keep-alive>
     <router-view v-if='reset'></router-view>
+    </keep-alive>
   </div>
 </template>
 

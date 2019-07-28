@@ -32,8 +32,8 @@
 		</div>
 		<div class="right_nav">
 			<ul>
-				<li class="nav_li" id="g_f"><router-link to="/saftyApp"><img  src="./img/nav_z.png"/> 消纳场监测</router-link> 
-              <ul id="gf" >
+				<li class="nav_li" id="r_f"><router-link to="/saftyApp"><img  src="./img/nav_z.png"/> 消纳场监测</router-link> 
+              <ul id="rf" >
 						<li @click="showBaseMesgInSafty=true"><router-link class="a_c" to="/saftyApp"><img  src="./img/car_mon.png" />基本信息</router-link></li>
 						<li  @click="showQueryInSafty=true"><router-link to="/saftyApp" class="menu"  id="trace" value = "1"><img  src="./img/trace.png" /> 信息查询</router-link></li>
 						<li  @click="showChartInSafty=true"><router-link to="/statGraph "> <img  src="./img/table.png" />信息统计</router-link></li>            
@@ -70,7 +70,7 @@
 					<div class="heti">影响因子占比饼图</div>
 					<div style="margin-top:17px">
 						<div id='test'  style=" width: 600px;height: 300px;margin-left: 10px;line-height: 300px;z-index:10;margin-top:100px" ref="myEchart2">
-          </div>
+          			</div>
 					</div>
 				</div>
 
@@ -334,10 +334,16 @@ body,div,p,dl,dt,dd,h1,a{
 #contain{
 	overflow: hidden;
 	width: 100%;
-	background-color: #081832;;
+	background-color: #081832;
+	overflow: auto;
+	position: absolute;
+	top:88px;
+	bottom: 0px;
+	
 }
 .heti{
 	background-color: #034c6a;
+	
     border-radius: 18px;
     height: 35px;
     width: 60%;

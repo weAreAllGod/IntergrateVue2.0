@@ -76,7 +76,7 @@
         </div>
         <div class="right_nav" >
           <ul>
-            <li class="nav_li" id="r_f"  @mouseenter="hide2()" @mouseleave="hidee1()">
+            <li class="nav_li" id="x_n"  @mouseenter="hide2()" @mouseleave="hidee1()">
               <router-link to="/saftyApp">
                 <img class="nav_image" src="./img/nav_z.png" /> 消纳场监测
               </router-link>
@@ -1386,5 +1386,36 @@ a {
   height: 650px;
   /* line-height: 100px; 
   border-bottom: 1px solid #b0cdff; */
+}
+/* 消纳场 */
+#xn{
+	position: absolute;
+	display: none;
+	background: #030829;
+	margin-top:-2px;
+	margin-left: 0px;
+	/* padding: 4px; */
+	z-index: 100;
+
+}
+
+#x_n:hover #xn{
+	display: block;
+}
+#xn li{
+	list-style: none;	
+	text-align: center;
+
+}
+#xn li:hover{
+	box-shadow: -10px 0px 15px #034c6a inset, 
+    0px -10px 15px #034c6a inset, 
+    10px 0px 15px #034c6a inset, 
+    0px 10px 15px #034c6a inset;
+
+}
+#xn li a input{
+	vertical-align: middle;
+	
 }
 </style>

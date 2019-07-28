@@ -52,9 +52,9 @@
 		</div>
 		<div class="right_nav">
 			<ul>
-				<li class="nav_li" id="g_f"><router-link to="/saftyApp"><img  src="./img/nav_z.png"/> 消纳场监测</router-link> 
-              <ul id="gf" >
-						<li @click="showBaseMesgInSafty=true"><router-link class="a_c" to="/saftyApp"><img  src="./img/car_mon.png" />基本信息</router-link></li>
+				<li class="nav_li" id="r_f"><router-link to="/saftyApp"><a href="#"><img  src="./img/nav_z.png"/> 消纳场监测</a></router-link> 
+              <ul id="rf" >
+						<li @click="showBaseMesgInSafty=true" class="a_c" ><router-link to="/saftyApp"><img  src="./img/car_mon.png" />基本信息</router-link></li>
 						<li  @click="showQueryInSafty=true"><router-link to="/saftyApp" class="menu"  id="trace" value = "1"><img  src="./img/trace.png" /> 信息查询</router-link></li>
 						<li  @click="showChartInSafty=true"><router-link to="/statGraph "> <img  src="./img/table.png" />信息统计</router-link></li>            
             </ul>
@@ -702,7 +702,38 @@ export default {
 	vertical-align: middle;
 	
 }
+/* 消纳场 */
 
+ #xn{
+	position: absolute;
+	display: none;
+	background: #030829;
+	margin-top:-2px;
+	margin-left: 0px;
+	/* padding: 4px; */
+	z-index: 100;
+
+}
+
+#x_n:hover #xn{
+	display: block;
+}
+#xn li{
+	list-style: none;	
+	text-align: center;
+
+}
+#xn li:hover{
+	box-shadow: -10px 0px 15px #034c6a inset, 
+    0px -10px 15px #034c6a inset, 
+    10px 0px 15px #034c6a inset, 
+    0px 10px 15px #034c6a inset;
+
+}
+#xn li a input{
+	vertical-align: middle;
+	
+}
 .itemDiv{
     display:table-cell;
   

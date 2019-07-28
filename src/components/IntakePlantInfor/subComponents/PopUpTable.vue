@@ -1,7 +1,7 @@
 <template>
 <body>
 <div class="popuptable"  v-show="showWindow" >
-    <div class="cesium-infoBox-title" style="color:white ;background: #48ca48;" >{{myconsum.name}}</div>
+    <div class="cesium-infoBox-title" style="color:white ;background: rgb(92, 99, 92)" >{{myconsum.name}}</div>
     <div class="divpoptable">
     <router-link style="color:white" to="/vedio">
     <button type="button" class="cesium-button cesium-infoBox-camera" style="width:50px ">o_o   

@@ -735,9 +735,11 @@ position: absolute;
     margin-top: 5px;
     color: #FFFFff;
     width: 100%;
-    height: 500px;
+   
     overflow: auto;
     position: absolute;; 
+    top:83px;
+    bottom: 0px;
     z-index: 3;
     
     
