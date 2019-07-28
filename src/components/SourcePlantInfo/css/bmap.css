@@ -1,0 +1,25 @@
+.navbar-brand{
+    background-image: url(../img/logo.png);
+    width: 50px;
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.navbar.navbar-default{
+    margin-bottom: 0;
+}
+
+#allmap{
+    width:100%;
+    height:700px;
+    font-family:"微软雅黑";
+}
+
+/* 隐藏百度地图图标和文字 */
+.BMap_cpyCtrl
+{
+display:none; 
+}
+.anchorBL{
+display:none; }

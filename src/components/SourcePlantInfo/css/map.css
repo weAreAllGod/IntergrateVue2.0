@@ -1,0 +1,42 @@
+body{
+    width: 100%;
+    height:100%;
+    background: #454545,
+    color：#eee,
+}
+
+.left{
+    background-image:url('../img/timg.jpg');
+    float: left;
+    width: 20%;
+    height:100%;
+    color:white,
+}
+
+
+.right{
+    height:100%;
+}
+
+.top{
+    background-image:url('../img/BG2.png');
+    height:70px;
+    vertical-align: middle;
+}
+
+#allmap{
+    height:674px;
+}
+
+html{
+    width: 100%;
+    height:100%;
+}
+
+/* 隐藏百度地图图标和文字 */
+.BMap_cpyCtrl
+{
+display:none; 
+}
+.anchorBL{
+display:none; }

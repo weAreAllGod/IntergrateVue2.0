@@ -1,0 +1,117 @@
+/* html,body{
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+
+    } */
+    .list-complete-item {
+        transition: all 1s;
+        display: inline-block;
+        margin-right: 10px;
+        }
+        .list-complete-enter, .list-complete-leave-to
+        /* .list-complete-leave-active for below version 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(30px);
+        }
+        .list-complete-leave-active {
+        position: absolute;
+        }
+    .menue{
+        color:white
+
+
+    }
+    .menue:hover{
+        cursor:pointer;
+        color:yellow;
+        font-size: 18px;
+        
+
+        }
+    .div1{
+        background-image: url('/images/test.png');
+        background-size: cover;
+        /* background-position-y: -500px; */
+        padding-top: 0px;
+        margin-left: 0;
+        margin-right: 0;
+        height: 40px;
+        position: fixed;        
+        top: 0;left: 0;right: 0;
+        text-align:center; line-height: 40px;
+        z-index: 1;
+         /* background-color: greenyellow; */
+    }
+    .div2{
+        width:10%;
+        margin-top:40px;
+        background-color: black;
+        display: block;float: left;
+        position: absolute;top: 0;bottom: 0;left: 0;
+        z-index: 1;
+    }
+    .div2_div1{
+        color: white ;
+        position: fixed;top: 20%;
+        z-index: 1;
+
+
+
+    }
+    .div2_div1_p{
+        font-size: 20px;
+        z-index: 1;
+
+    }
+    .div2_div1_p:hover{
+        font-size: 25px;
+        color:yellow;
+        cursor: pointer;
+        z-index: 1;
+    }
+    .div3{
+        display: block;
+        float: right;width:90%;
+        position: fixed;top: 40px;right: 0;bottom: 0;
+        overflow: auto;
+        z-index: 1;
+
+    }
+
+    .div4{
+
+        width: 600px;
+        height: 500px;
+        margin: auto;
+        position: absolute;
+        background-color:white;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 3;
+        
+        /* display: none; */
+
+    }
+    .div5{
+        margin: auto;
+        position: absolute;
+        background-color:rgb(22, 158, 56);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0.5;
+        z-index: 2;
+        /* display: none; */
+
+
+    }
+
+    /* 去掉宣传的logon */
+    .cesium-widget-credits{
+
+        display: none !important;
+    }
