@@ -30,7 +30,7 @@
                 </i-Col>
             </Row>
             <!-- 定义表table -->
-            <Table id='source_info_1' :row-class-name="rowClassName" :columns="columns" :data="filterData" @on-selection-change="select"></Table>
+            <Table id='source_infomation' :row-class-name="rowClassName" :columns="columns" :data="filterData" @on-selection-change="select"></Table>
             <br>
             <!-- 定义分页 -->
             <Page :total="dataCount" :page-size="pageSize" :page-size-opts="sizeopts" @on-change="changepage" @on-page-size-change="changesize" show-total show-sizer show-elevator/>
@@ -328,9 +328,9 @@ import axios from 'axios'
            
            rowClassName :function (row, index) {
                 if(index%2==0){
-                return 'ivu-table-stripe-even';
+                return 'stripe-even';
                 }
-                else return 'ivu-table-stripe-odd';
+                else return 'stripe-odd';
             },
 
         
@@ -520,7 +520,11 @@ import axios from 'axios'
     }
 </script>
 
-<style scoped>
+<style>
+html{
+    height: calc(100vh);
+    background: #081832;
+}
 .info2_button {
     margin-bottom: 10px;
 }
@@ -544,6 +548,7 @@ import axios from 'axios'
 .info2_submd{
     font-size: 15px;
     margin-right: 10px;
+    color: #fff;
 }
 .tangram-suggestion {
     z-index: 9999;
@@ -555,8 +560,71 @@ import axios from 'axios'
 display:none; 
 }
 .anchorBL{
-display:none; }
+display:none; 
+}
 
+/* 表格样式设置 */
+/*外层table的border*/
+.ivu-table-wrapper{
+    border: 0;
+}
+#source_infomation .ivu-table{
+    background-color: #081832;
+    padding: 0px;
+    margin: 0px;
+}
+/* #source_infomation .ivu-table-wrapper {
+    border: none;
+} */
 
+/*头部th*/
+#source_infomation .ivu-table-header th{
+    text-align: center;
+    font-size: 12px;
+    color: #4b8df8;
+    background-color: #072951;
+    box-shadow: 0px 8px 8px -8px #034c6a inset, 0px 8px 8px -8px #034c6a inset;
+    border: none;
+}
+/*每行的基本样式*/
+#source_infomation .ivu-table-row td {
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    color: #fff;
+    border:none
+  }
+
+/*奇数行*/
+#source_infomation .stripe-even td{
+    background-color: #072951;
+    box-shadow: 0px 15px 15px -15px #034c6a inset, 0px -15px 15px -15px #034c6a inset;
+}
+/*偶数行*/
+#source_infomation .stripe-odd td{
+    background-color: #081832;
+}
+/*选中某一行高亮*/
+#source_infomation .ivu-table-row-highlight td {
+    background-color: #072951!important;
+  }
+  /*浮在某行*/
+#source_infomation .ivu-table-row-hover td {
+    background-color: #072951!important;
+}
+#source_infomation .ivu-table:before{height:0px}
+#source_infomation .ivu-table:after{width:0px}
+.ivu-modal-header{
+    background-color: #072951;
+}
+.ivu-modal-body{
+    background-color: #072951;
+}
+.ivu-modal-footer{
+    background-color: #072951;
+}
+.ivu-modal-header-inner{
+    color: #fff
+}
 </style>
 

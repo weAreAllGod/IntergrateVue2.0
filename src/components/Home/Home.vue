@@ -16,14 +16,14 @@
               <ul id="cs">
                 <li>
                   <router-link class="a_c" to="/source">
-                    <img src="./img/car_mon.png" class="nav_image" /> 产生源地图
+                    <img src="./img/car_mon.png" class="nav_image" /> 地理位置
                   </router-link>
                 </li>
-                <li>
+                <!-- <li>
                   <router-link to="/source/info" class="menu" id="trace" value="1">
                     <img src="./img/trace.png" class="nav_image" />基本信息
                   </router-link>
-                </li>
+                </li> -->
                 <li>
                   <router-link to="/source/statistics">
                     <img src="./img/table.png" class="nav_image" />信息统计
