@@ -254,12 +254,52 @@ export default {
 //设置静态资源目录
     buildModuleUrl.setBaseUrl('./../../static/Cesium/');
     //初始化的时候把视角放在中国
+    // 设置好我的密匙
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmOThkMTczMy1mNTE5LTQ5MWMtODliNy03Mzg0NTUwYWNiZTUiLCJpZCI6MTYzNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzAzNjcwMzF9.z-YZFjiTeymr-WOQqbHepPTFA9jiCssEJx4Vc7vuP8I';
     var china=Cesium.Rectangle.fromDegrees(100,10,120,70);
     Cesium.Camera.DEFAULT_VIEW_RECTANGLE = china;
     //创建viewer实例
+    // 天地图http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles
+
    
     var url = "http://mt1.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali";
     var google=new Cesium.UrlTemplateImageryProvider({url:url})
+
+  // 矢量底图
+   var tdtImagerLayerProvider = new Cesium.WebMapTileServiceImageryProvider({
+            url:"http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+            layer: "tdtImgAnnoLayer",
+            style: "default",
+            // format: "image/jpeg",
+            tileMatrixSetID: "GoogleMapsCompatible",
+            show: false,
+            // maximumLevel:18
+        });
+    // 影像底图
+    var tdtImagerLayerProvider1 = new Cesium.WebMapTileServiceImageryProvider({
+      url:"http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+      layer: "tdtImgAnnoLayer",
+      style: "default",
+      // format: "image/jpeg",
+      tileMatrixSetID: "GoogleMapsCompatible",
+      show: false,
+      // maximumLevel:18
+    });
+    // 标注底图
+    var tdtImagerLayerProvider2 = new Cesium.WebMapTileServiceImageryProvider({
+    url:"http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+    layer: "tdtImgAnnoLayer",
+    style: "default",
+    // format: "image/jpeg",
+    tileMatrixSetID: "GoogleMapsCompatible",
+    show: false,
+    // maximumLevel:18
+  });
+
+
+
+ 
+   
     this.viewer = new Cesium.Viewer('cesiumContainer',{
         animation: false,
         baseLayerPicker: false,//表示地形地貌
@@ -273,9 +313,13 @@ export default {
         infoBox: false,//表示消息栏
         //navigationInstructionsInitiallyVisible: false,
         //地形的提供者
-        imageryProvider: google
+        // imageryProvider: tdtImagerLayerProvider,
+        imageryProvider:tdtImagerLayerProvider1,
+        // imageryProvider:tdtImagerLayerProvider2
+        terrainProvider : Cesium.createWorldTerrain()
          
     });
+    this.viewer.imageryLayers.addImageryProvider( tdtImagerLayerProvider2); 
 
     
     this.viewer._cesiumWidget._creditContainer.style.display = "none";  //去掉logo 

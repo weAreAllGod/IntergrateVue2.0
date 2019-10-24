@@ -170,11 +170,8 @@ export default {
     //   }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
 
 created:function(){
-    console.log("0000000000000000000000000000000000>")
-    console.log(this.appconsumers)
+
 bus.$on("addentity",(msg)=>{ 
-    console.log("Menu中由Table提交的实体")     
-    console.log(msg.latitude)
     var thatenty=this.addEnity(msg);
     this.myentiys.splice(1,0,thatenty) ;            
 
