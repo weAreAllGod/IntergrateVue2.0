@@ -1,50 +1,9 @@
 <template>
     <div id="con">
         <div id="allmap" v-if='reset' :style="mapStyle"></div>
-        <!-- <Modal v-model="info_modal" draggable title="信息录入表" width="300" :transfer="false">
-
-        </Modal> -->
-        <div id="source_modal" v-show="show">
-            <table id="info-table">
-                <tr>
-                    <th>产生源:</th>
-                    <th>{{sourceAddress}}</th>
-                </tr>
-                <tr>
-                    <th>责任单位:</th>
-                    <th>{{sourceCompany}}</th>
-                </tr>
-                <tr>
-                    <th>上报时间:</th>
-                    <th>{{startDate}}</th>
-                </tr>
-                <tr>
-                    <th>属性:</th>
-                    <th>{{sourceAttrbute}}</th>
-                </tr>
-                <tr>
-                    <th>垃圾类型:</th>
-                    <th>{{sourceType}}</th>
-                </tr>
-                <tr>
-                    <th>成分分析:</th>
-                    <th>{{wasteComponent}}</th>
-                </tr>
-                <tr>
-                    <th>建议:</th>
-                    <th>{{suggestion}}</th>
-                </tr>
-                <tr>
-                    <th>备注:</th>
-                    <th>{{content}}</th>
-                </tr>
-            </table>
-        </div>
     </div>
 </template>
-
 <script type="text/javascript">
-// import modal1 from './View'
 import axios from 'axios'
 export default{
     data(){
@@ -58,7 +17,6 @@ export default{
             suggestion:'',
             content:'',
 
-            show:0,
             info_modal:false,
             reset:true,
             data_info:[],
@@ -87,8 +45,7 @@ export default{
             
             // 设置地图风格
             var  mapStyle ={ 
-                    // features: ["road", "building","water","land"],//隐藏地图上的poi
-                            style : "midnight"  //设置地图风格为高端黑
+                            style : "midnight"  //设置地图风格
                             }
             map.setMapStyle(mapStyle);
             // 左上角，添加比例尺
@@ -105,7 +62,7 @@ export default{
             offset: size,
             }));
 
-
+            // 向后端发送请求获取数据
             axios({
                 headers: {
                   token: this.$store.state.token
@@ -115,7 +72,6 @@ export default{
                 })
                 .then(response => {
                     this.data_info=response.data.data
-                    // console.log(this.data_info)
 
                     var markers = [];
                     for(var i=0;i<this.data_info.length;i++){
@@ -123,27 +79,46 @@ export default{
                         var marker = new BMap.Marker(new BMap.Point(this.data_info[i]['sourceLong'],this.data_info[i]['sourceLat']));
                         markers.push(marker);
                         map.addOverlay(marker);               // 将标注添加到地图中
-                        marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+                        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //设置点动画
                     }
 
-                        //监听点击事件
-                        var _this=this
+                    var opts = {
+                        boxStyle:{
+                        opacity: "0.8",
+                        background: "#081832",
+                        width: "250px",
+                        height: "370px"
+                        },
+                        closeIconUrl:"http://api0.map.bdimg.com/images/iw_close1d3.gif",
+                        closeIconMargin: "10px 10px 0 0",
+                        enableAutoPan: true,
+                        align: INFOBOX_AT_TOP
+                    };
+                    
+
+                    //监听点击事件
+                    var _this=this
                     for(var i=0;i<markers.length;i++){
                         (function(){
                         var index=i
                         markers[i].addEventListener("click",function(e){
-                            
-                            // console.log(index)
-                            _this.sourceAddress=_this.data_info[index]['sourceAddress']
-                            _this.sourceCompany=_this.data_info[index]['sourceCompany']
-                            _this.startDate=_this.data_info[index]['startDate']
-                            _this.sourceAttrbute=_this.data_info[index]['sourceAttrbute']
-                            _this.sourceType=_this.data_info[index]['sourceType']
-                            _this.wasteComponent=_this.data_info[index]['wasteComponent']
-                            _this.suggestion=_this.data_info[index]['suggestion']
-                            _this.content=_this.data_info[index]['content']
-                            
-                            _this.show=!_this.show
+                            var content='测试';
+                            var html = "<div class='infoBoxContent'><br><table id='info-table'><tr><th>产生源:</th><th>" 
+                                +_this.data_info[index]['sourceAddress']+"</th></tr><tr><th>责任单位:</th><th>"
+                                +_this.data_info[index]['sourceCompany']+"</th></tr><tr><th>上报时间:</th><th>"
+                                +_this.data_info[index]['startDate']+"</th></tr><tr><th>属性:</th><th>"
+                                +_this.data_info[index]['sourceAttrbute']+"</th></tr><tr><th>垃圾类型:</th><th>"
+                                +_this.data_info[index]['sourceType']+"</th></tr><tr><th>成分分析:</th><th>"
+                                +_this.data_info[index]['wasteComponent']+"</th></tr><tr><th>建议:</th><th>"
+                                +_this.data_info[index]['suggestion']+"</th></tr><tr><th>备注:</th><th>"
+                                +_this.data_info[index]['content']+"</th></tr></table></div>"
+                                
+                            // 创建信息窗口对象
+                            // var infoWindow = new BMap.InfoWindow(content,opts);
+                            var infoWindow =  new BMapLib.InfoBox(map,html,opts);
+                            // 打开信息窗口
+                            // map.openInfoWindow(infoWindow,point);
+                            infoWindow.open(markers[index]);
 
                         })
                     })();
@@ -152,7 +127,6 @@ export default{
 
             })
             .catch(error => console.log(error))
-            
 
             map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
             map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
@@ -180,16 +154,7 @@ export default{
     border:1px solid #008CBA;
     text-align: center;
   }
-#source_modal{
-    width: 300px;
-    /* height: 500px; */
-    z-index: 999999;
-    right: 0px;
-    background-color: #081832;
-    margin-top: 170px;
-    margin-right: 0px;
-    position: fixed;
-}
+
 #con{
     overflow: hidden;
 }
@@ -200,4 +165,37 @@ display:none;
 }
 .anchorBL{
 display:none; }
+
+.infoBoxContent{
+      margin:20px;
+    }
+    .infoBoxContent button{
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 16px;
+      width: 120px;
+    }
+    .infoBoxContent h3{
+      color: white;
+    }
+    .infoBoxContent p{
+      color:white;
+    }
+    .infoBoxContent:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-top-color: #081832;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      margin-left: -20px;
+    }
+
 </style>

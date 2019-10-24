@@ -12,7 +12,7 @@ import View from '@/components/monitor_vehicle/View'
 import source from '@/components/SourcePlantInfo/view'
 import map from '@/components/SourcePlantInfo/map'
 import statistics from '@/components/SourcePlantInfo/statistics'
-import info from '@/components/SourcePlantInfo/info'
+// import info from '@/components/SourcePlantInfo/info'
 import info2 from '@/components/SourcePlantInfo/info2'
 
 // 消纳场的路由
@@ -74,7 +74,7 @@ export default new Router({
         {path:'/query/WASTE_REUSE_INFO',name:"WASTE_REUSE_INFOLink",component:WASTE_REUSE_INFO},
       ], redirect:'/query/RESOURCE_PLANT_INFO'     /* 默认显示表格“RESOURCE_PLANT_INFO” */
     },
-    //liangbingjie
+    //产生源
     {
       path: '/source',
       name: 'source',
@@ -91,10 +91,10 @@ export default new Router({
           path: 'statistics',
           component: statistics
         },
-        {
-          path: 'info',
-          component: info
-        },
+        // {
+        //   path: 'info',
+        //   component: info
+        // },
         {
           path: 'info2',
           component: info2

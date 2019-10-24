@@ -6,8 +6,8 @@
 				<li class="nav_li" id="h_p" ><router-link  to="/home"><img src="./image/monitor_vehicle/nav_p.png" class="nav_image"/> 首页</router-link> </li>
 				<li class="nav_li" id="c_s" ><a href="#"><img src="./image/monitor_vehicle/nav_c.png" class="nav_image"/> 产生源监测</a> 
 					<ul id="cs" >
-						<li><router-link class="a_c" to="/source"><img src="./image/monitor_vehicle/car_mon.png" class="nav_image"/> 产生源地图</router-link></li>
-						<li><router-link to="/source/info" class="menu"  id="trace" value = "1"><img  src="./image/monitor_vehicle/trace.png" class="nav_image"/>基本信息</router-link></li>
+						<li><router-link class="a_c" to="/source"><img src="./image/monitor_vehicle/car_mon.png" class="nav_image"/>地理位置</router-link></li>
+						<!-- <li><router-link to="/source/info" class="menu"  id="trace" value = "1"><img  src="./image/monitor_vehicle/trace.png" class="nav_image"/>基本信息</router-link></li> -->
 						<li><router-link to="/source/statistics"> <img  src="./image/monitor_vehicle/table.png" class="nav_image"/>信息统计</router-link></li>
 						<li><router-link to="/source/info2"> <img  src="./image/monitor_vehicle/etinfo.png" class="nav_image"/>信息维护</router-link></li>
 					</ul>
