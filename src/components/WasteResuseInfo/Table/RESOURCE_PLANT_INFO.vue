@@ -163,7 +163,6 @@
 </template>
 <script>
 import axios from "axios";
-// import map from './map'
 export default {
   data() {
     return {
@@ -457,29 +456,9 @@ methods: {
     height: 40px;
     font-size: 13px;
     text-align: center;
-    color: #fff;
+    /* color: #fff; */
     border:none
   }
-
-/*奇数行*/
-#source_info_2 .ivu-table-stripe-even td{
-    border:none;
-    background-color: #072951;
-    box-shadow: 0px 15px 15px -15px #034c6a inset, 0px -15px 15px -15px #034c6a inset;
-}
-/*偶数行*/
-#source_info_2 .ivu-table-stripe-odd td{
-    border:none;
-    background-color: #081832;
-}
-/*选中某一行高亮*/
-#source_info_2 .ivu-table-row-highlight td {
-    background-color: #072951!important;
-  }
-  /*浮在某行*/
-#source_info_2 .ivu-table-row-hover td {
-    background-color: #072951!important;
-}
 
 .ivu-table-wrapper {
     border: none;
@@ -492,5 +471,8 @@ html{
     height: calc(100vh);
     background: #081832;
 }
+
+
+
 </style>
 

@@ -40,7 +40,7 @@ export default {
                     this.temp.push(
                     {
                         "value":this.totalActualWeight[i].actualWeight,//value
-                        "name":"资源场"+this.totalActualWeight[i].resourcePlantId[14]//name
+                        "name":"资源场"+this.totalActualWeight[i].resourcePlantId[14]+"(序号表示)"//name
                         
                          
                     });
@@ -50,7 +50,6 @@ export default {
                     /* 标题 */
                     title: {
                             // text: '资源厂收纳垃圾量统计',
-                            // subtext: '虚构数据',
                             left: '30%' ,
                             textStyle:{
                             color:'#61D2F7'
@@ -78,7 +77,7 @@ export default {
                             {
                                 type: 'pie',
                                 radius : '75%',
-                                center: ['40%', '50%'],
+                                center: ['50%', '50%'],
                                 selectedMode: 'single',
                                 
                                 data:this.temp,
@@ -95,16 +94,12 @@ export default {
                          color: ['#9ACD32','#836FFF','#8B2500','#FF4040','rgb(111,0,100)']
                     })
 
-                   
-                   
-
                 };
 
                     this.temp0=JSON.stringify(this.temp)
                     this.temp=this.temp0;
                     console.log(12345678910);
                     console.log(this.temp)
-
                 }
             ).catch(error=>console.log(error));
                 },
