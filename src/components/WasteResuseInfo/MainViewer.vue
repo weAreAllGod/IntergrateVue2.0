@@ -1,15 +1,8 @@
 <template>
-<<<<<<< HEAD
-    <div id="mainDiv">
-		<viw></viw>
-        <div id="cesiumContainer" class="div3">
-
-=======
     <div id="mainDiv" style="height=100%">
 		<div><viw></viw></div>
-        <div id="cesiumContainer">
+        <div id="cesiumContainer" class="div3">
         	<CesiumViewer></CesiumViewer>
->>>>>>> 0c0ada7a6a59a5b2d05cccb4674a0de5f1818ca3
         </div>
 		
     </div>
@@ -221,35 +214,20 @@ export default {
         width:100%;
        height:100%; 
     }
-    /* #cesiumContainer{
-        width:100%;
-<<<<<<< HEAD
-        height:80%; 
-    } */
+
 	.div3{
-    /* display: block;
-    float: right;width:100%;
-    position: fixed;top: 40px;                          bottom: 0;
-    overflow: auto;
-     */
-    /* display: block; */
+
     position: absolute;
-    /* margin-top: 80px; */
     top:88px;
     bottom: 0px;
-    /* overflow: hidden; */
     margin-top: 0px;
     left: 0;
     border: none;
     width: 100%;
-    /* height: calc(100%-88px); */
     z-index: 1;
 
 }
-=======
-        height:100%; 
-    }
+
 	
-	
->>>>>>> 0c0ada7a6a59a5b2d05cccb4674a0de5f1818ca3
+
 </style>

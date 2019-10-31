@@ -204,7 +204,9 @@ export default {
   color: #ffffff;
 }
 .table_style {
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #072951;
+  
   box-shadow: -8px 0px 10px #034c6a inset, 8px 0px 10px #034c6a inset;
   border: none !important;
   font-size: 13px;
@@ -214,6 +216,7 @@ export default {
 }
 .table_style td {
   border: none !important;
+  /* background-color: #f56c6c; */
 }
 .table_style tbody tr:nth-child(2n + 1) {
   background-color: #072951;
@@ -222,6 +225,10 @@ export default {
 .table_style thead tr {
   color: #4b8df8;
 }
+/* .el-table__body tr:hover>td {
+  
+    background-color: #f56c6c;
+} */
 .table_style thead th {
   border-bottom: none !important;
 }
@@ -249,4 +256,5 @@ export default {
   padding-top: 20px;
   /* padding-bottom: 20px; */
 }
+
 </style>

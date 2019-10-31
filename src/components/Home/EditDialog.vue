@@ -89,4 +89,10 @@
     font-size: 14px;
     word-break: break-all;
 }
+/* .td.el-table_1{
+    background-color:#072951;
+    } */
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+    background-color: #072951;
+}
 </style>

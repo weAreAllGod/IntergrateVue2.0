@@ -408,4 +408,11 @@ export default {
 .el-container {
     padding: 0px;
 }
+/* .el-table__body tr:hover>td {
+    background-color: :#072951;
+} */
+/* .td.el-table_1{
+    background-color:#072951;
+    } */
+
 </style>
