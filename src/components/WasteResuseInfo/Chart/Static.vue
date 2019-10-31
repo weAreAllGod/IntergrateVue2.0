@@ -6,53 +6,55 @@
 		</div>
 		<div id="content" >
 			<div id="contain" class="containe">
-                
-				<div class="left">
-					
-					<div class="heti">资源厂收纳垃圾量统计</div>
+                <!-- 饼图 -->
+				<div class="left" >
+					<div class="heti" >资源厂收纳垃圾量统计</div>
 					<div style="margin-top:17px">
-						<bar></bar>
+						<pie ></pie>
+					</div>
+				</div>
+				<!-- 雷达图  -->
+				<div class="right">
+					<div class="heti">各资源厂不同类型建筑垃圾量统计</div>
+					<div style="margin-top:17px">
+					<radarChart></radarChart>
+					</div>
+				</div>
+				<!-- 柱状图 -->
+				<div class="left">
+					<div class="heti">近三天各个资源厂的收纳垃圾数量</div>
+					<div style="margin-top:17px">
+					<barChart></barChart>
+					</div>
+				</div>
+				<!-- 折线图 -->
+				<div class="right">
+					<div class="heti">资源厂产出量</div>
+					<div style="margin-top:17px">
+					<lineChart></lineChart>
 					</div>
 				</div>
 
-				<div class="right">
-					<div class="heti">不同类型建筑垃圾量统计</div>
-					<div style="margin-top:17px">
-					<pie></pie>
-					</div>
-				</div>
-        
-        <div class="right">
-					
-					<div class="heti">各个资源厂的收纳垃圾数量</div>
-					<div style="margin-top:17px">
-					<stbar></stbar>
-					</div>
-				</div>
-				<!-- <div class="right">
-					<div class="heti">车辆报警统计</div>
-					<div style="margin-top:17px">
-					<stbar></stbar>
-					</div>
-				</div> -->
-				
 			</div>
 		</div>
+
   </div>
 </template>
 
 <script>
 // import viw from '../View'
-import bar from './C1'
-import pie from './C2'
-import stbar from './C3'
+import pie from './C1'
+import radarChart from './C2'
+import barChart from './C3'  //雷达图
+import lineChart from './lineChart'
 import Vew from '../View'
 export default {
   name: 'Chart',
   components: {
-        bar,
         pie,
-        stbar,
+        radarChart,
+		barChart,
+		lineChart,
       	Vew
   }
 }
@@ -118,4 +120,5 @@ body,div,p,dl,dt,dd,h1,a{
 	text-align: center;
 	/* margin-left: 20%; */
 }
+
 </style>
