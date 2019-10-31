@@ -120,7 +120,7 @@
       <div class="div_any">
         <div class="div_any01">
           
-          <div id="cesiumContainer" style="width:100%;height:100%;"></div>
+          <div id="cesiumContainer" class="div4"></div>
  
               <div id="mainmap" v-show="isShow0" ></div>
 
@@ -182,18 +182,18 @@ export default {
       this.isShow3 = !this.isShow3;
       
     },
-    hide1(){
-      this.isShow0= false;
-    },
-    hidee(){
-      this.isShow0= true;
-    },
-     hide2(){
-      this.isShow1= false;
-    },
-    hidee1(){
-      this.isShow1= true;
-    },
+    // hide1(){
+    //   this.isShow0= false;
+    // },
+    // hidee(){
+    //   this.isShow0= true;
+    // },
+    //  hide2(){
+    //   this.isShow1= false;
+    // },
+    // hidee1(){
+    //   this.isShow1= true;
+    // },
     loginout() {
       this.$router.replace("/");
     },
@@ -1177,7 +1177,22 @@ a {
   box-sizing: border-box;
   overflow: auto;
 }
+.div4{
+  
+    display: block;
+    position: absolute;
+    margin-top: 80px;
+    top:88px;
+    bottom: 0px;
+    overflow: hidden;
+    margin-top: 0px;
+    left: 0;
+    border: none;
+    width: 100%;
+   
+    /* z-index: 1; */
 
+}
 .find_expend {
   display: none;
 }

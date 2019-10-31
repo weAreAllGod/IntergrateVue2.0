@@ -1,7 +1,7 @@
 <template>
     <div id="mainDiv">
 		<viw></viw>
-        <div id="cesiumContainer">
+        <div id="cesiumContainer" class="div3">
 
         </div>
         <CesiumViewer v-if="viewer" :viewer="viewer"></CesiumViewer>
@@ -177,8 +177,28 @@ export default {
         width:100%;
        height:100%; 
     }
-    #cesiumContainer{
+    /* #cesiumContainer{
         width:100%;
         height:80%; 
-    }
+    } */
+	.div3{
+    /* display: block;
+    float: right;width:100%;
+    position: fixed;top: 40px;                          bottom: 0;
+    overflow: auto;
+     */
+    /* display: block; */
+    position: absolute;
+    /* margin-top: 80px; */
+    top:88px;
+    bottom: 0px;
+    /* overflow: hidden; */
+    margin-top: 0px;
+    left: 0;
+    border: none;
+    width: 100%;
+    /* height: calc(100%-88px); */
+    z-index: 1;
+
+}
 </style>
