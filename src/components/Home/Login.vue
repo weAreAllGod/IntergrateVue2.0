@@ -77,7 +77,7 @@ export default {
       data1: [],
       backgroundDiv: {
         // src\assets
-        backgroundImage: "url(" + require("../Home/img/login.jpg") + ")",
+        backgroundImage: "url(" + require("../Home/img/login2.jpg") + ")",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -134,12 +134,12 @@ export default {
            if (store.state.token){
              var rol = res.data.data.role;
               if (rol == "customer") {
-            alert("登录成功！");
+            // alert("登录成功！");
             this.$router.push("/home");
           //  this.$router.push("/query");
               // this.$router.push("/mainViewer");
           } else if (rol == "admin,customer") {
-            alert("登录成功！");
+            // alert("登录成功！");
             this.$router.push("/home");
             // this.$router.push("/mainViewer")
           //  this.$router.push("/query");

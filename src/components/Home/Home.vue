@@ -16,14 +16,14 @@
               <ul id="cs">
                 <li>
                   <router-link class="a_c" to="/source">
-                    <img src="./img/car_mon.png" class="nav_image" /> 地理位置
+                    <img src="./img/car_mon.png" class="nav_image" /> 产生源地图
                   </router-link>
                 </li>
-                <!-- <li>
+                <li>
                   <router-link to="/source/info" class="menu" id="trace" value="1">
                     <img src="./img/trace.png" class="nav_image" />基本信息
                   </router-link>
-                </li> -->
+                </li>
                 <li>
                   <router-link to="/source/statistics">
                     <img src="./img/table.png" class="nav_image" />信息统计
@@ -76,7 +76,7 @@
         </div>
         <div class="right_nav" >
           <ul>
-            <li class="nav_li" id="x_n"  @mouseenter="hide2()" @mouseleave="hidee1()">
+            <li class="nav_li" id="r_f"  @mouseenter="hide2()" @mouseleave="hidee1()">
               <router-link to="/saftyApp">
                 <img class="nav_image" src="./img/nav_z.png" /> 消纳场监测
               </router-link>
@@ -119,14 +119,24 @@
       <!--统计分析图-->
       <div class="div_any">
         <div class="div_any01">
-          <!-- itemDiv -->
-          <!-- class="top" -->
-          <!-- <div id="mainmap" style="z-index:100;"></div> -->
-          <div id="cesiumContainer"></div>
-          <div id="mainmap" v-show="isShow0" style="z-index:100;"></div>
-          <div id="mainline"  v-show="isShow1" style="z-index:100;"></div>
-          <div id="mainpie"  v-show="isShow2" style="z-index:100;"></div>
-          <div id="mainpop"  v-show="isShow3" style="z-index:100;"></div>
+          
+          <div id="cesiumContainer" style="width:100%;height:100%;"></div>
+ 
+              <div id="mainmap" v-show="isShow0" ></div>
+
+
+
+              <div id="mainline"  v-show="isShow1" ></div>
+
+           
+            <div id="mainpie"  v-show="isShow2" ></div>
+
+
+              <div id="mainpop"  v-show="isShow3" ></div>
+        
+          
+          
+         
           <div id="earth">
             <img class="nav1_image" src="./img/earth.png" @click ="hide()">  </div>
           
@@ -271,6 +281,7 @@ export default {
         ]
       };
       myChart.setOption(option);
+      window.onresize = myChart.resize;
     },
     initEchart2() {
       let myChart = this.$echarts.init(document.getElementById("mainline"));
@@ -615,9 +626,40 @@ export default {
 
     buildModuleUrl.setBaseUrl("../static/Cesium/");
     // // 创建viewer实例
-
+    Cesium.Ion.defaultAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJjYjAxOWM5NC0wNzJlLTQzYzAtOWYwZi1jNDAxMjI2NDM5NDgiLCJpZCI6MTY1MzYsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzA2OTgyNTJ9.ymaufGrpGhy-m5PRVh2Y4T5-OrPuh4Xaf8wta-J5BTs';
+    // 矢量底图
+   var tdtImagerLayerProvider = new Cesium.WebMapTileServiceImageryProvider({
+            url:"http://t0.tianditu.com/vec_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=vec&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+            layer: "tdtImgAnnoLayer",
+            style: "default",
+            // format: "image/jpeg",
+            tileMatrixSetID: "GoogleMapsCompatible",
+            show: false,
+            // maximumLevel:18
+        });
+    // 影像底图
+    var tdtImagerLayerProvider1 = new Cesium.WebMapTileServiceImageryProvider({
+      url:"http://t0.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+      layer: "tdtImgAnnoLayer",
+      style: "default",
+      // format: "image/jpeg",
+      tileMatrixSetID: "GoogleMapsCompatible",
+      show: false,
+      // maximumLevel:18
+    });
+    // 标注底图
+    var tdtImagerLayerProvider2 = new Cesium.WebMapTileServiceImageryProvider({
+    url:"http://t0.tianditu.com/cia_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=aacbbcb77eaa21d2af0e4c4b03a2de88",
+    layer: "tdtImgAnnoLayer",
+    style: "default",
+    // format: "image/jpeg",
+    tileMatrixSetID: "GoogleMapsCompatible",
+    show: false,
+    // maximumLevel:18
+  });
     this.viewer = new Cesium.Viewer("cesiumContainer", {
-      // 需要进行可视化的数据源的集合
+       
+       // 需要进行可视化的数据源的集合
       animation: false, // 是否显示动画控件
       shouldAnimate: true,
       homeButton: true, // 是否显示Home按钮
@@ -629,16 +671,20 @@ export default {
       navigationHelpButton: false, // 是否显示帮助信息控件
       selectionIndicator: true,
       infoBox: true, // 是否显示点击要素之后显示的信息
-      requestRenderMode: true, // 启用请求渲染模式
-      scene3DOnly: false, // 每个几何实例将只能以3D渲染以节省GPU内存
+      // requestRenderMode: true, // 启用请求渲染模式
+      // scene3DOnly: false, // 每个几何实例将只能以3D渲染以节省GPU内存
       sceneMode: 3, // 初始场景模式 1 2D模式 2 2D循环模式 3 3D模式  Cesium.SceneMode
-      fullscreenElement: document.body // 全屏时渲染的HTML元素 暂时没发现用处
+      // fullscreenElement: document.body // 全屏时渲染的HTML元素 暂时没发现用处
+      imageryProvider:tdtImagerLayerProvider1,
+        // imageryProvider:tdtImagerLayerProvider2
+      terrainProvider : Cesium.createWorldTerrain()
     });
-
+    
     // 去除版权信息
     this.viewer._cesiumWidget._creditContainer.style.display = "none";
     this.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(
       Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK
+      
     );
     // this.flyfly();
     this.viewer.scene.camera.moveEnd.addEventListener(() => {
@@ -853,6 +899,7 @@ export default {
     }
   }
 };
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiN2MyYTY2Ny03YmQ0LTQ4MTktOWQxZi1hYWM3YTFhMTBiYzUiLCJpZCI6MTY1MzYsInNjb3BlcyI6WyJhc2wiLCJhc3IiLCJhc3ciLCJnYyJdLCJpYXQiOjE1NzA2OTgyODh9.ttfGdmQUcKC9PdgnIoBtqYk7qPmj_uIPUW4eY0LTscw
 </script>
 
 <style>
@@ -873,22 +920,27 @@ a {
   margin: 0px;
   padding: 0px 0px;
   position: absolute;
-  left: 0px;
-  top: 140px;
-  width: 450px;
-  height: 300px;
+
+  width:30%;
+  float:right;
+  right: 2%;
+  top: 20%;
+
+  height: 30%;
   background-color: rgba(0, 0, 0, 0);
 }
 #mainline {
   margin: 0px;
   padding: 0px 0px;
   position: absolute;
-  right: 20px;
-  top: 140px;
-  width: 450px;
-  height: 300px;
+  width:30%;
+  float:left;
+  left: 3%;
+  top: 20%;
+  height: 30%;
   background-color: rgba(0, 0, 0, 0);
 }
+
 #earth{
   margin: 0px;
   padding: 0px 0px;
@@ -900,20 +952,23 @@ a {
   margin: 0px;
   padding: 0px 0px;
   position: absolute;
-  left: 0px;
-  top: 500px;
-  width: 450px;
-  height: 300px;
+  width:30%;
+  float:right;
+  right: 2%;
+  top: 60%;
+  /* width: 450px; */
+  height: 30%;
   background-color: rgba(0, 0, 0, 0);
 }
 #mainpop {
   margin: 0px;
   padding: 0px 0px;
   position: absolute;
-  right: 20px;
-  top: 500px;
-  width: 450px;
-  height: 300px;
+  width:30%;
+  float:left;
+  left: 3%;
+  top: 60%;
+  height: 30%;
   background-color: rgba(0, 0, 0, 0);
 }
 #header {
@@ -1386,36 +1441,5 @@ a {
   height: 650px;
   /* line-height: 100px; 
   border-bottom: 1px solid #b0cdff; */
-}
-/* 消纳场 */
-#xn{
-	position: absolute;
-	display: none;
-	background: #030829;
-	margin-top:-2px;
-	margin-left: 0px;
-	/* padding: 4px; */
-	z-index: 100;
-
-}
-
-#x_n:hover #xn{
-	display: block;
-}
-#xn li{
-	list-style: none;	
-	text-align: center;
-
-}
-#xn li:hover{
-	box-shadow: -10px 0px 15px #034c6a inset, 
-    0px -10px 15px #034c6a inset, 
-    10px 0px 15px #034c6a inset, 
-    0px 10px 15px #034c6a inset;
-
-}
-#xn li a input{
-	vertical-align: middle;
-	
 }
 </style>
