@@ -255,7 +255,7 @@ export default {
     buildModuleUrl.setBaseUrl('./../../static/Cesium/');
     //初始化的时候把视角放在中国
     // 设置好我的密匙
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmOThkMTczMy1mNTE5LTQ5MWMtODliNy03Mzg0NTUwYWNiZTUiLCJpZCI6MTYzNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzAzNjcwMzF9.z-YZFjiTeymr-WOQqbHepPTFA9jiCssEJx4Vc7vuP8I';
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5MjM3Yjg1MS02NGMwLTQ0YWEtYTlmMS1jMWE3NWJmMWZmN2IiLCJpZCI6MTYzNzIsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1ODQwMDM4MjV9.9EZDdXcru4Kk13z9MqsOaSE1d0nKZO4nfMs-AYkV_rQ';
     var china=Cesium.Rectangle.fromDegrees(100,10,120,70);
     Cesium.Camera.DEFAULT_VIEW_RECTANGLE = china;
     //创建viewer实例
@@ -295,7 +295,7 @@ export default {
     show: false,
     // maximumLevel:18
   });
-
+ 
 
 
  
@@ -315,6 +315,7 @@ export default {
         //地形的提供者
         // imageryProvider: tdtImagerLayerProvider,
         imageryProvider:tdtImagerLayerProvider1,
+        // imageryProvider:google,
         // imageryProvider:tdtImagerLayerProvider2
         terrainProvider : Cesium.createWorldTerrain()
          

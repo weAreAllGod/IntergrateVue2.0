@@ -138,7 +138,7 @@ export default {
             this.$router.push("/home");
           //  this.$router.push("/query");
               // this.$router.push("/mainViewer");
-          } else if (rol == "admin,customer") {
+          } else if (rol == "admin" | rol=="customer") {
             // alert("登录成功！");
             this.$router.push("/home");
             // this.$router.push("/mainViewer")

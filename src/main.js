@@ -9,6 +9,8 @@ import echarts from 'echarts'
 import axios from 'axios'
 import Element from 'element-ui'
 import store from './store'
+// 兼容
+import 'babel-polyfill'
 // ./store/index.js
 import 'element-ui/lib/theme-chalk/index.css'
 // 引入样式
