@@ -14,7 +14,7 @@
     "build": "node --max_old_space_size=4096 build/build.js"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cesium": "^1.58.1",
     "echarts": "^4.2.1",
     "element-ui": "^2.10.0",
